@@ -1,18 +1,27 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import Navbar from "./Components/Navbar"
+import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+//pages....................................................................
+import Home from "./Pages/Home";
+import Products from "./Pages/Products";
+
+import DataContextProvider from "./Components/DataContext";
 
 function App() {
   return (
     <div>
-      <Navbar/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-      </Routes>
-    </BrowserRouter>
-    <Footer/>
+      <DataContextProvider>
+       
+        <BrowserRouter>
+        <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/products" element={<Products/>}></Route>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+        
+      </DataContextProvider>
     </div>
   );
 }
