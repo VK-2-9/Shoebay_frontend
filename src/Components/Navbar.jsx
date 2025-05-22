@@ -32,7 +32,7 @@ function Navbar() {
   
   
   return (
-    <div className=" w-[100%] px-5 sm:px-16  border-black border-b-2 flex sm:flex-wrap justify-between items-center">
+    <div className=" w-[100%]  px-5 sm:px-16 bg-[#ffffff] mb-2 flex sm:flex-wrap justify-between items-center sticky top-0 z-[20]">
       {/* Section one................................................................................................................... */}
       <div className="w-[20%] hover:border-black hover:border-b-[3px] transition ease-in-out flex items-center justify-start ">
         <FontAwesomeIcon icon={faSearch} className="cursor-pointer font-bold" />

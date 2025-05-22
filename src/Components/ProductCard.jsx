@@ -2,15 +2,15 @@ import product from "../assets/images/test.png"
 
 function ProductCard(){
     return(
-        <div className="bg-[#ffebeb] sm:m-3 p-2 sm:w-[13rem] border rounded-md flex flex-col justify-evenly  items-start">
-            <img src={product} alt="product image" className="cursor-pointer border rounded-xl"></img>
+        <div className="bg-[#e3dfdf] p-3 w-[9rem] sm:w-[13rem] rounded-md flex flex-col justify-evenly  items-start   ">
+            <img src={product} alt="product image" className=" cursor-pointer border rounded-xl"></img>
             <div>
-                <p className="">Puma sneakers</p>
+                <p className="font-bold mt-2">Puma sneakers</p>
             </div>
             
             <p>₹599</p>
             <div>
-                <select className="bg-transparent outline-none w-10 mr-4">
+                <select className="bg-transparent outline-none w-12 mr-4  rounded-md ">
                     <option selected disabled>Qty</option>
                     <option>1</option>
                     <option>2</option>
@@ -18,7 +18,7 @@ function ProductCard(){
                     <option>4</option>
                     <option>5</option>
                 </select>
-                <button className="">Add to Cart</button>
+                <button className="bg-[#c6c3c3] px-2 py-1 rounded-md ">Add to Cart</button>
             </div>
             
             <tags className="hidden">sneaker,black</tags>

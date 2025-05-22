@@ -1,5 +1,5 @@
 import ProductCard from "../Components/ProductCard"
-import Scroll from "../Components/Scroll"
+import Cover from "../Components/Cover"
 import adidas from "../assets/images/brands/adidas.png"
 import newbalance from "../assets/images/brands/newbalance.png"
 import nike from "../assets/images/brands/nike.png"
@@ -17,7 +17,7 @@ const imgArr=[puma,adidas,newbalance,nike,reebok,skechers,wildcraft]
 
     return(
         <div>
-            <Scroll/>
+            <Cover/>
 
            {/* popular brands.............................................................................................................  */}
             <div className="my-2 mx-1 sm:m-5">

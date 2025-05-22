@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-    font-family: sans-serif;
+    font-family:sans-serif;
     
 }
 
@@ -25,4 +25,14 @@ z-index: 99;
 }
 
 /* scroll div */
+
+.scroll_div{
+    
+    background-image: url("../src/assets/images/scroll1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   background-position: center;
+}
+
+
 

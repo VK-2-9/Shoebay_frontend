@@ -9,7 +9,7 @@ import DataContextProvider from "./Components/DataContext";
 
 function App() {
   return (
-    <div>
+    <div className="bg-[#f5ecec]">
       <DataContextProvider>
        
         <BrowserRouter>
