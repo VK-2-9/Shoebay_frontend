@@ -2,7 +2,7 @@ import product from "../assets/images/test.png"
 
 function ProductCard(){
     return(
-        <div className="bg-[#e3dfdf] p-3 w-[9rem] sm:w-[13rem] rounded-md flex flex-col justify-evenly  items-start   ">
+        <div className="bg-[#e3dfdf] p-3 w-[9rem] sm:w-[13rem] rounded-md flex flex-col justify-evenly  items-start col-span-1  ">
             <img src={product} alt="product image" className=" cursor-pointer border rounded-xl"></img>
             <div>
                 <p className="font-bold mt-2">Puma sneakers</p>

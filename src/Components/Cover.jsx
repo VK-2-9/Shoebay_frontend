@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 function Cover() {
   return (
 
-      <div className="scroll_div w-[30%] sm:h-[50vh] sm:w-[100vw]">
+      <div className="scroll_div h-[20vh] sm:h-[50vh]  relative">
 
         <Link to="/products">
-        <button className="bg-[#C4A484]">
+        <button className="bg-transparent text-white font-bold absolute top-[40%] left-[10%] px-3 py-2 rounded-xl border-2 border-white hover:bg-white hover:text-black transition-all duration-300">
           Shop now
         </button>
         </Link>

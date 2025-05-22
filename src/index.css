@@ -27,12 +27,36 @@ z-index: 99;
 /* scroll div */
 
 .scroll_div{
-    
-    background-image: url("../src/assets/images/scroll1.jpg");
+    background-color: black;
+    background-image: url("../src/assets/images/scroll3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
    background-position: center;
 }
 
+/* .grid_product{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    align-content: space-between;
+    gap: 20px;
+    
+}
 
 
+@media screen and (max-width: 1120px) {
+    .grid_product{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 20px;
+    }
+    
+}
+
+@media screen and (max-width: 950px) {
+    .grid_product{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 20px;
+    }
+    
+} */

@@ -20,8 +20,8 @@ const imgArr=[puma,adidas,newbalance,nike,reebok,skechers,wildcraft]
             <Cover/>
 
            {/* popular brands.............................................................................................................  */}
-            <div className="my-2 mx-1 sm:m-5">
-                <h1 className="text-sm sm:text-2xl sm:font-bold">Popular brands</h1>
+            <div className="mt-3 mx-2  bg-white px-5 py-3 rounded-md">
+                <h1 className="text-base sm:text-2xl font-bold">Popular brands</h1>
                 <div className="w-[100%] flex flex-wrap justify-between items-center">
                     {
                         imgArr.map((item)=>{
@@ -35,17 +35,20 @@ const imgArr=[puma,adidas,newbalance,nike,reebok,skechers,wildcraft]
             </div>
 
             {/* popular models............................................................................................................. */}
-            <div className="my-2 mx-1 sm:m-5">
-                <h1 className="text-sm sm:text-2xl sm:font-bold">Popular models</h1>
-                <div>
-                    <div>
-
-                    </div>
-                </div>
-                </div> 
-
-
-             <ProductCard/>          
+            <div className="mt-3 mx-2  bg-white px-5 py-3 rounded-md">
+                <h1 className="text-base sm:text-2xl font-bold">Popular models</h1>
+                
+               <div className="m-2 mt-1 py-6  sm:px-4 bg-white w-[100%] flex flex-wrap gap-7">
+               <ProductCard/>     
+             <ProductCard/>  
+             <ProductCard/>  
+             <ProductCard/> 
+             <ProductCard/> 
+             <ProductCard/> 
+             <ProductCard/> 
+               </div>
+             
+             </div>      
 
         </div>
     )
