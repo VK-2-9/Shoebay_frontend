@@ -1,14 +1,14 @@
 import product from "../assets/images/test.png"
 
-function ProductCard(){
+function ProductCard(props){
     return(
-        <div className="bg-[#e3dfdf] p-3 w-[9rem] sm:w-[13rem] rounded-md flex flex-col justify-evenly  items-start col-span-1  ">
-            <img src={product} alt="product image" className=" cursor-pointer border rounded-xl"></img>
+        <div className="bg-[#e3dfdf] p-3 min-h-max ml-[6%] mb-4 sm:ml-0 sm:mb-0 text-sm w-[8rem] sm:w-[13rem] rounded-md flex flex-col items-start  ">
+            <img src={props.img} alt="product image" className=" cursor-pointer border rounded-xl"></img>
             <div>
-                <p className="font-bold mt-2">Puma sneakers</p>
+                <p className=" font-medium mt-2">{props.name}</p>
             </div>
             
-            <p>₹599</p>
+            <p className="font-bold">₹{props.price}</p>
             <div>
                 <select className="bg-transparent outline-none w-12 mr-4  rounded-md ">
                     <option selected disabled>Qty</option>
@@ -24,7 +24,7 @@ function ProductCard(){
             <tags className="hidden">sneaker,black</tags>
         </div>
     )
-
+    
 
 }
 

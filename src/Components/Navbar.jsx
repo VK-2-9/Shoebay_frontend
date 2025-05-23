@@ -11,12 +11,13 @@ import {
 import { useContext, useState } from "react";
 import {DataContext}  from "../Components/DataContext";
 import { Link, useNavigate } from "react-router-dom";
+import productsData from "../assets/productsData.js";
 
 // sidenav function..............................................................
 
 function Navbar() {
   const [navDisplay, setNavDisplay] = useState(false);
-  const{searchInput, setSearchInput} = useContext(DataContext);
+  const{searchInput, setSearchInput,allProducts,setAllProducts} = useContext(DataContext);
   const openVerticalNav = () => {
     setNavDisplay(!navDisplay);
     console.log(navDisplay);
@@ -27,12 +28,20 @@ function Navbar() {
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
     console.log(searchInput);
+    
+    const serachFilteredProducts=productsData.filter((item)=>{
+        if( item.name.toLowerCase().includes(searchInput.toLowerCase()))
+        return item;
+    })
+
+      setAllProducts(serachFilteredProducts);
+    
   }
 
   
   
   return (
-    <div className=" w-[100%] py-2  px-5 sm:px-16 bg-[#ffffff] mb-2 flex sm:flex-wrap justify-between items-center sticky top-0 z-[20]">
+    <div className=" w-[100%] py-2  px-5 sm:px-16 bg-[#ffffff]  flex sm:flex-wrap justify-between items-center sticky top-0 z-[20]">
       {/* Section one............................................................................ ....................................... */}
       <div className="w-[20%] hover:border-black hover:border-b-[3px] transition ease-in-out flex items-center justify-start ">
         <FontAwesomeIcon icon={faSearch} className="cursor-pointer font-bold" />
@@ -53,21 +62,21 @@ function Navbar() {
       {/* Section three................................................................................................................... */}
 
       <div className="hidden gap-10 sm:flex">
-        <div>
+        <Link to="/cart">
           <FontAwesomeIcon
             icon={faCartShopping}
             className="text-xl"
           ></FontAwesomeIcon>
           <p className="">Cart</p>
-        </div>
-        <div>
+        </Link>
+        <Link to="/orders">
           <FontAwesomeIcon
             icon={faBagShopping}
             className="text-xl"
           ></FontAwesomeIcon>
 
           <p>Orders</p>
-        </div>
+        </Link>
 
         <div>
           <FontAwesomeIcon icon={faUser} className="text-xl"></FontAwesomeIcon>

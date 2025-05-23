@@ -1,6 +1,6 @@
 
 
-export const products=[
+ const productsData=[
     {
         id:1,
         name:"Puma Shuffle Ultra Sneakers",
@@ -346,3 +346,5 @@ export const products=[
     },
     
 ]
+
+export default productsData;

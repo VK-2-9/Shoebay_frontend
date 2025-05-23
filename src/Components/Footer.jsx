@@ -2,7 +2,7 @@ import logo from "../assets/images/logo_inverted.png";
 
 function Footer() {
   return (
-    <div className="bg-[black]  text-white p-5 sm:justify-center py-10 flex  gap-14 sm:gap-32 items-start">
+    <div className="bg-[black]  text-white p-5 sm:justify-center py-10 flex  gap-14 sm:gap-22 items-start">
 
       <div className="flex flex-col justify-center items-start w-[70%]  sm:w-[30%]">
         <div className="flex items-center cursor-pointer">
