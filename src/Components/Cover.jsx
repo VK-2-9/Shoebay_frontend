@@ -1,16 +1,14 @@
-import scroll1 from "../assets/images/scroll1.jpg";
-import scroll2 from "../assets/images/scroll2.png";
-import scroll3 from "../assets/images/scroll3.jpg";
+
 
 import { Link } from "react-router-dom";
 
 function Cover() {
   return (
 
-      <div className="scroll_div h-[20vh] sm:h-[50vh]  relative">
+      <div className="cover relative h-[125px] sm:h-[60vh]">
 
         <Link to="/products">
-        <button className="bg-transparent text-white font-bold absolute top-[40%] left-[10%] px-3 py-2 rounded-xl border-2 border-white hover:bg-white hover:text-black transition-all duration-300">
+        <button className="bg-[#c1eafc]  text-sm sm:text-3xl font-bold absolute top-[70%] left-[8%] sm:top-[75%] sm:left-[10%] px-1 sm:px-3 sm:py-2 rounded-md border-2 border-[#08041C] hover:bg-white hover:text-black transition-all duration-300">
           Shop now
         </button>
         </Link>

@@ -26,12 +26,13 @@ z-index: 99;
 
 /* scroll div */
 
-.scroll_div{
+.cover{
     background-color: black;
-    background-image: url("../src/assets/images/scroll3.jpg");
+    background-image: url("../src/assets/images/cover.png");
     background-repeat: no-repeat;
     background-size: cover;
-   background-position: center;
+    width: 100vw;
+   background-position:center;
 }
 
 /* .grid_product{

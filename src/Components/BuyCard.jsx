@@ -21,7 +21,7 @@ function BuyCard(){
                     <td className="p-2">₹449</td>
                 </tr>
             </table>
-            <button className=" bg-green-600 px-2 py-1 border-2 border-black rounded-md flex items-center gap-1 hover:bg-[#474646] hover:text-white transition duration-300">Place order</button>
+            <button className="  px-2 py-1 border-2 border-black rounded-md flex items-center gap-1 hover:bg-black hover:text-white transition duration-300">Place order</button>
 
         </div>
     )

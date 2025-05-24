@@ -14,8 +14,8 @@ function CartCard(){
              <p className="font-bold">Ouma Sneakers</p>
              <p>₹399</p> 
              <p>Qty: 2</p>
-             <button className="bg-red-600 px-2 py-1 border-2 border-black rounded-md flex items-center gap-1 hover:bg-[#474646] hover:text-white transition duration-300">
-                <FontAwesomeIcon icon={faTrash} className="text-black cursor-pointer"/> Remove from cart
+             <button className=" px-2 py-1 border-2 border-black rounded-md flex items-center gap-1 hover:bg-black hover:text-white transition duration-300">
+                <FontAwesomeIcon icon={faTrash} className="text-red-600 hover:text-white cursor-pointer"/> Remove from cart
              </button>
             </div>
         </div>
