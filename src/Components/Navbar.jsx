@@ -11,14 +11,16 @@ import {
 import { useContext, useState } from "react";
 import { DataContext } from "../Components/DataContext";
 import { Link, useNavigate } from "react-router-dom";
-import productsData from "../assets/productsData.js";
+
 
 // sidenav function..............................................................
 
 function Navbar() {
   const [navDisplay, setNavDisplay] = useState(false);
-  const { searchInput, setSearchInput, allProducts, setAllProducts } =
+  const { searchInput, setSearchInput, allProducts, setAllProducts,productsData,UName} =
     useContext(DataContext);
+const navigate=useNavigate()
+
   const openVerticalNav = () => {
     setNavDisplay(!navDisplay);
     console.log(navDisplay);
@@ -34,7 +36,12 @@ function Navbar() {
     );
 
     setAllProducts(searchFilteredProducts);
+    
   };
+  
+  const searchClick=()=>{
+      navigate("/products")
+  }
 
   return (
     <div className=" w-[100%] py-2  px-5 sm:px-16 bg-[#ffffff]  flex sm:flex-wrap justify-between items-center sticky top-0 z-[20]">
@@ -44,6 +51,7 @@ function Navbar() {
         <input
           value={searchInput}
           onChange={handleSearch}
+          onClick={searchClick}
           placeholder="Search"
           type="search"
           className="p-2 w-[4em] sm:w-[100%] outline-none bg-transparent placeholder:text-black "
@@ -59,14 +67,14 @@ function Navbar() {
       {/* Section three................................................................................................................... */}
 
       <div className="hidden gap-10 sm:flex">
-        <Link to="/cart">
+        <Link to="/cart" className="navbar_tooltip">
           <FontAwesomeIcon
             icon={faCartShopping}
             className="text-xl"
           ></FontAwesomeIcon>
-          <p className="">Cart</p>
+          <p>Cart</p>
         </Link>
-        <Link to="/orders">
+        <Link to="/orders" className="navbar_tooltip">
           <FontAwesomeIcon
             icon={faBagShopping}
             className="text-xl"
@@ -75,11 +83,11 @@ function Navbar() {
           <p>Orders</p>
         </Link>
 
-        <div>
+        <Link to={"/profile"}  className="navbar_tooltip pr-10">
           <FontAwesomeIcon icon={faUser} className="text-xl"></FontAwesomeIcon>
 
-          <p>Profile</p>
-        </div>
+          <p>{UName}</p>
+        </Link>
       </div>
       {/* vertical NAV.................................................................................................. */}
       <div className=" sm:hidden menu text-xl font-bold  ">
@@ -105,7 +113,7 @@ function Navbar() {
           }}
         >
           <Link className="mt-2">
-            <p>Profile</p>
+            <p>Profile {UName}</p>
           </Link>
           <Link to={"/cart"} className="mt-2">
             <p>Cart</p>

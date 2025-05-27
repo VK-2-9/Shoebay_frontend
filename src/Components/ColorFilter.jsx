@@ -2,7 +2,7 @@ import Radio from "../Components/Radio";
 
 
 function ColorFilter(){
-    const ColorArr=["Red","Blue"]
+    const ColorArr=["Red","Blue","Black","Yellow","Green","White"]
     return(
          <div>
           <h1 className="">Colour</h1>

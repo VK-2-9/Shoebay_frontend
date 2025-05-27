@@ -19,8 +19,7 @@ function Radio(props) {
         selectedFilters=[...filterInput,selectedvalue]
     }
     setFilterInput(selectedFilters)
-          console.log(filterInput)
-          console.log(selectedFilters)
+          
     
     if(selectedFilters.length===0) {
       setAllProducts(productsData)
@@ -40,7 +39,7 @@ function Radio(props) {
         value={props.name}
         className="appearance-none w-3 h-3  border-2 border-blue-700 checked:bg-blue-700 checked:border-white checked:ring-blue-700   checked:ring-2 rounded-full cursor-pointer"
       ></input>
-      <label for={props.name} className="">{props.name}</label>
+      <label htmlFor={props.name}>{props.name}</label>
     </div>
   );
 }
