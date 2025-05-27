@@ -1,7 +1,7 @@
 import Radio from "../Components/Radio";
 
 function CollectionFilter() {
-  const collectionArr = ["Sneakers", "Cricket", "Football", "Running", "Gym"];
+  const collectionArr = ["Sneakers", "Cricket", "Football", "Running", "Gym","Casuals"];
 
   return (
     <div>

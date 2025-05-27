@@ -1,26 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMinusCircle,
-  faPlus,
+  
   faPlusCircle,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import axios from "axios";
 
 function CartCard(props) {
-  const { cartProducts, setCartProducts } = useContext(DataContext);
+  const {  setCartProducts } = useContext(DataContext);
 //here id is db id(_id)
   const incQty = async (id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/cartproducts/incqty/${id}`
+        `https://shoebay-backend.onrender.com/api/cartproducts/incqty/${id}`
       );
 
       if (response.status === 200) {
         await axios
-          .get("http://localhost:5000/api/cartproducts")
+          .get("https://shoebay-backend.onrender.com/api/cartproducts")
           .then((data) => setCartProducts(data.data))
           .catch(() => console.log("Error fetching cartproducts"));
       }
@@ -32,11 +32,11 @@ function CartCard(props) {
   const decQty = async (id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/cartproducts/decqty/${id}`
+        `https://shoebay-backend.onrender.com/api/cartproducts/decqty/${id}`
       );
       if (response.status === 200) {
         await axios
-          .get("http://localhost:5000/api/cartproducts")
+          .get("https://shoebay-backend.onrender.com/api/cartproducts")
           .then((data) => setCartProducts(data.data))
           .catch((err) => console.log("unable to get data", err));
       }
@@ -48,11 +48,11 @@ function CartCard(props) {
 
   const deleteProduct=async(id)=>{
     try{
-       const response= await axios.patch(`http://localhost:5000/api/cartproducts/deleteproduct/${id}`)
+       const response= await axios.patch(`https://shoebay-backend.onrender.com/api/cartproducts/deleteproduct/${id}`)
         
       if(response.status===200){
         await axios
-          .get("http://localhost:5000/api/cartproducts")
+          .get("https://shoebay-backend.onrender.com/api/cartproducts")
           .then((data) => setCartProducts(data.data))
           .catch((err) => console.log("unable to get data", err));
       }
@@ -63,9 +63,9 @@ function CartCard(props) {
   }
 
   return (
-    <div className="p-2 flex items-center gap-5 bg-[#f5ecec] rounded-md  ">
+    <div className="p-2 flex items-center gap-5 bg-[#F1F3F6] rounded-md  ">
       <div className="w-[200px]  md:w-[15rem  ]">
-        <img className=" rounded-md" src={props.img}></img>
+        <img className=" rounded-md" src={props.img} alt="image err"></img>
       </div>
 
       <div className="flex flex-col gap-2">

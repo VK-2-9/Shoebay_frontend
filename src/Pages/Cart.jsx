@@ -9,17 +9,17 @@ import { useNavigate } from "react-router-dom";
 import auth from "../config/firebase";
 
 function Cart() {
-    const{cartProducts,setCartProducts,allProducts}=useContext(DataContext)
+    const{cartProducts,setCartProducts}=useContext(DataContext)
     const navigate=useNavigate()
 
   useEffect(() => {
                
-            const data= axios
-               .get("http://localhost:5000/api/cartproducts")
+           axios
+               .get("https://shoebay-backend.onrender.com/api/cartproducts")
                .then((data) => setCartProducts(data.data))
                .catch((err) => console.log("API fetching failed for cart", err));
 
-               console.log(cartProducts) 
+               
 
               
     auth.onAuthStateChanged((user) => {
@@ -28,7 +28,7 @@ function Cart() {
       }
     });
  
-           }, []);
+           }, [navigate]);
 
 
 

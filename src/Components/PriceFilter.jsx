@@ -1,7 +1,7 @@
 import Radio from "../Components/Radio";
 
 function CollectionFilter(){
-    const PriceArr=["500-1000","1000-2000","2000-3000","Above 3000"]
+    const PriceArr=["1000-2000","2000-3000","3000-4000","Above 4000"]
     return(
         <div>
             <h1>Price</h1>

@@ -17,7 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [navDisplay, setNavDisplay] = useState(false);
-  const { searchInput, setSearchInput, allProducts, setAllProducts,productsData,UName} =
+  const { searchInput, setSearchInput,  setAllProducts,productsData,UName} =
     useContext(DataContext);
 const navigate=useNavigate()
 
@@ -112,8 +112,8 @@ const navigate=useNavigate()
             display: navDisplay ? "" : "none",
           }}
         >
-          <Link className="mt-2">
-            <p>Profile {UName}</p>
+          <Link to={"/profile"} className="mt-2">
+            <p>Profile </p>
           </Link>
           <Link to={"/cart"} className="mt-2">
             <p>Cart</p>

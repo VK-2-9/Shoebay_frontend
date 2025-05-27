@@ -1,5 +1,5 @@
 import ProductCard from "../Components/ProductCard";
-import { useState, useContext } from "react";
+import {  useContext } from "react";
 
 import { DataContext } from "../Components/DataContext";
 import BrandFilter from "../Components/BrandFilter.jsx";
@@ -11,7 +11,7 @@ function Products() {
   const { allProducts} = useContext(DataContext);
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between " >
       {/* left section............................................................................................... */}
       <div className="m-2 mt-1 py-10 px-5 bg-white hidden sm:flex flex-col justify-start gap-7 items-start w-[14rem] h-[100%]">
         <BrandFilter />
@@ -31,7 +31,7 @@ function Products() {
           );
         })}
       </div>
-    </div>
+    </div>  
   );
 }
 

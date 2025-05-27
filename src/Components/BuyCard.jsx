@@ -3,7 +3,7 @@
 function BuyCard(){
 
     return(
-        <div className="bg-[#f5ecec]  p-2 rounded-md">
+        <div className="bg-[#F1F3F6]  p-2 rounded-md">
             <p>Total price:</p>
             <table>
                 <tbody>

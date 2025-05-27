@@ -7,7 +7,7 @@ function DataContextProvider(data) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/productsData")
+      .get("https://shoebay-backend.onrender.com/api/productsData")
       .then((data) => {
         setAllProducts(data.data);
         setProductsData(data.data)

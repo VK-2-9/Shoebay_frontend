@@ -1,21 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import product from "../assets/images/test.png";
 import axios from "axios";
 import { DataContext } from "./DataContext";
 import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
 import auth from "../config/firebase";
 
 function ProductCard(props) {
   const [selectedSize, setSelectedSize] = useState();
   const [buttonDisplay, setButtonDisplay] = useState(true);
-  const { cartProducts, setCartProducts } = useContext(DataContext);
   const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      if (user) {
+      if (user) { 
         setLogged(true);
       }
     });
@@ -28,26 +25,27 @@ function ProductCard(props) {
   const addToCart = async (name, size) => {
     // checking duplicate cart
 
-    !selectedSize
-      ? alert("Select a size") 
-      : !logged
-      ? alert("login First")
-      :console.log("fail") 
+    if (!selectedSize) {
+      alert("Select a size");
+    } else if (!logged) {
+      alert("login First");
+    } else {
       setButtonDisplay(false);
       await axios
-      .post("http://localhost:5000/api/cartproducts", {
-        name: props.name,
-        img: props.img,
-        size: selectedSize,
-        price: props.price,
-        id: props.id, // normal ID..............................................................
-        qty: "1",
-      })
-      .then((data) => console.log(data.data,"fail"))
-      .catch((err) => {
-        console.log(err.response.data);
-        alert("Product already added to the cart");
-      });
+        .post("https://shoebay-backend.onrender.com/api/cartproducts", {
+          name: props.name,
+          img: props.img,
+          size: selectedSize,
+          price: props.price,
+          id: props.id, // normal ID..............................................................
+          qty: "1",
+        })
+        .then((data) => console.log(data.data, "fail"))
+        .catch((err) => {
+          console.log(err.response.data);
+          alert("Product already added to the cart");
+        });
+    }
   };
 
   const goToCart = (name, size) => {

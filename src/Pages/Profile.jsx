@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { DataContext } from "../Components/DataContext";
+import {  useEffect } from "react";
 
 import auth from "../config/firebase";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +6,6 @@ import { signOut } from "firebase/auth";
 
 function Profile() {
   const navigate = useNavigate();
-  const { uName } = useContext(DataContext);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -15,7 +13,7 @@ function Profile() {
         navigate("/login");
       }
     });
-  }, []);
+  }, [navigate]);
   
   const logout=()=>{
     signOut(auth)

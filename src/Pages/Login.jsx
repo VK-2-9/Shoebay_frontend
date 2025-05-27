@@ -5,9 +5,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../config/firebase";
 
 function Login() {
-  const { uName, setUName, email, setEmail } = useContext(DataContext);
+  const {  email, setEmail } = useContext(DataContext);
   const [pass, setPass] = useState("");
-  const [rePass, setRePass] = useState("");
   const [credentialerr, setCredentialErr] = useState(false);
   const navigate=useNavigate()
 
@@ -17,7 +16,7 @@ function Login() {
                 navigate("/")
             }
         })
-    },[])
+    },[navigate])
 
   const handleSubmit = (e) => {
     e.preventDefault();

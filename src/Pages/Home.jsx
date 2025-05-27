@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { DataContext } from "../Components/DataContext";
 
 function Home() {
-  const { allProducts ,productsData} = useContext(DataContext);
+  const { productsData} = useContext(DataContext);
 
   const imgArr = [puma, adidas, newbalance, nike, reebok, skechers, wildcraft];
 
@@ -41,7 +41,7 @@ function Home() {
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("puma")) {
+            if (item.tags.includes("puma")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -63,7 +63,7 @@ function Home() {
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("adidas")) {
+            if (item.tags.includes("adidas")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -87,7 +87,7 @@ function Home() {
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("newbalance")) {
+            if (item.tags.includes("newbalance")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -110,7 +110,7 @@ function Home() {
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("nike")) {
+            if (item.tags.includes("nike")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -129,11 +129,11 @@ function Home() {
 
 
       <div className="mt-3 mx-2  bg-white px-5 py-3 rounded-md">
-        <h1 className="text-xl sm:text-2xl font-extrabold">PUMA</h1>
+        <h1 className="text-xl sm:text-2xl font-extrabold">REEBOK</h1>
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("puma")) {
+            if (item.tags.includes("reebok")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -153,11 +153,11 @@ function Home() {
 
 
       <div className="mt-3 mx-2  bg-white px-5 py-3 rounded-md">
-        <h1 className="text-xl sm:text-2xl font-extrabold">PUMA</h1>
+        <h1 className="text-xl sm:text-2xl font-extrabold">SKECHERS</h1>
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("puma")) {
+            if (item.tags.includes("skechers")) {
               return (
                 <ProductCard
                   key={item._id}
@@ -178,11 +178,11 @@ function Home() {
 
 
       <div className="mt-3 mx-2  bg-white px-5 py-3 rounded-md">
-        <h1 className="text-xl sm:text-2xl font-extrabold">PUMA</h1>
+        <h1 className="text-xl sm:text-2xl font-extrabold">WILDCRAFT</h1>
 
         <div className="m-2 mt-1 pt-3 sm:px-4 bg-white w-full flex  gap-7 overflow-auto ">
           {productsData.map((item) => {
-            if (item.brand.includes("puma")) {
+            if (item.tags.includes("wildcraft")) {
               return (
                 <ProductCard
                   key={item._id}

@@ -3,7 +3,7 @@
 function AddressCard(){
 
     return(
-        <div className="bg-[#f5ecec] sm:mx-2 p-2 rounded-md">
+        <div className="bg-[#F1F3F6] sm:mx-2 p-2 rounded-md">
             <p className="py-2">Enter your address here:</p>
             <input type="text" placeholder="Name" className=" outline-none rounded-md p-1 w-full sm:my-3"/>
             <input type="text" placeholder="Address" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>

@@ -18,7 +18,7 @@ function SignUp() {
                 navigate("/")
             }
         })
-    },[])
+    },[navigate])
 
   const handleSubmit = (e) => {
     e.preventDefault()
