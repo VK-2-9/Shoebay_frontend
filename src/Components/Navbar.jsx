@@ -12,14 +12,13 @@ import { useContext, useState } from "react";
 import { DataContext } from "../Components/DataContext";
 import { Link, useNavigate } from "react-router-dom";
 
-
 // sidenav function..............................................................
 
 function Navbar() {
   const [navDisplay, setNavDisplay] = useState(false);
-  const { searchInput, setSearchInput,  setAllProducts,productsData,UName} =
+  const { searchInput, setSearchInput, setAllProducts, productsData, UName } =
     useContext(DataContext);
-const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const openVerticalNav = () => {
     setNavDisplay(!navDisplay);
@@ -30,18 +29,16 @@ const navigate=useNavigate()
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
 
-   const searchFilteredProducts= productsData.filter((item) => 
-      item.name.toLowerCase().includes(searchInput.toLowerCase()
-  )
+    const searchFilteredProducts = productsData.filter((item) =>
+      item.name.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     setAllProducts(searchFilteredProducts);
-    
   };
-  
-  const searchClick=()=>{
-      navigate("/products")
-  }
+
+  const searchClick = () => {
+    navigate("/products");
+  };
 
   return (
     <div className=" w-[100%] py-2  px-5 sm:px-16 bg-[#ffffff]  flex sm:flex-wrap justify-between items-center sticky top-0 z-[20]">
@@ -83,44 +80,40 @@ const navigate=useNavigate()
           <p>Orders</p>
         </Link>
 
-        <Link to={"/profile"}  className="navbar_tooltip pr-10">
+        <Link to={"/profile"} className="navbar_tooltip pr-10">
           <FontAwesomeIcon icon={faUser} className="text-xl"></FontAwesomeIcon>
 
           <p>{UName}</p>
         </Link>
       </div>
       {/* vertical NAV.................................................................................................. */}
-      <div className=" sm:hidden menu text-xl font-bold  ">
-        {navDisplay ? (
+      <div className=" sm:hidden font-bold  ">
+        <div className>
+          {" "}
           <FontAwesomeIcon
-            onClick={openVerticalNav}
-            icon={faX}
-          ></FontAwesomeIcon>
-        ) : (
-          <FontAwesomeIcon
-            onClick={openVerticalNav}
             icon={faBars}
-            className="text-xl "
+            className={`cursor-pointer text-2xl relative  `}
+            onClick={openVerticalNav}
           ></FontAwesomeIcon>
-        )}
+          <div className={`absolute bg-white flex flex-col top-0 left-48 w-[300rem] h-[100vh]  pl-2 pt-3 transition-all ease-in-out duration-1000  ${navDisplay? "opacity-100" : "opacity-0 pointer-events-none transform translate-x-1/2"}`}>
+            <div>
+              <FontAwesomeIcon
+                icon={faX}
+                className="text-2xl"
+                onClick={openVerticalNav}
+              />
+            </div>
+            <Link to="/cart" className="mt-5">
+              <p>Cart</p>
+            </Link>
+            <Link to="/orders"  className="mt-5">
+              <p>Orders</p>
+            </Link>
 
-        {/* mobilenav................................................................................................................................. */}
-        <div
-          className=" h-[100vh] vertical_nav  p-5 bg-white "
-          style={{
-            transform: navDisplay ? "translateX(-70%)" : "translateX(100%)",
-            display: navDisplay ? "" : "none",
-          }}
-        >
-          <Link to={"/profile"} className="mt-2">
-            <p>Profile </p>
-          </Link>
-          <Link to={"/cart"} className="mt-2">
-            <p>Cart</p>
-          </Link>
-          <Link to={"/orders"} className="mt-2">
-            <p>Orders</p>
-          </Link>
+            <Link to={"/profile"} className="mt-5">
+              <p>Profile</p>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

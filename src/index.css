@@ -7,22 +7,6 @@
     
 }
 
-.menu{
-    position: relative;
-}
-
-.vertical_nav{
-   
-    position: absolute;
-    top:20px;
-    flex-direction: column;
-    gap: 50px;
-    align-items: start;
-    transition: ease-in-out;
-transition-duration: 400ms;   
-z-index: 99;
-
-}
 
 /* scroll div */
 

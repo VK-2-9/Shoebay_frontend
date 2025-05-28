@@ -57,7 +57,7 @@ function ProductCard(props) {
     navigate("/cart");
   };
   return (
-    <div className=" ml-[6%] mb-4 sm:ml-0 sm:mb-0 text-sm min-w-[8rem] sm:w-[13rem] justify-between sm:h-[22rem] rounded-md flex flex-col items-start  ">
+    <div className=" ml-[6%] mb-4 sm:ml-0 sm:mb-0 text-sm min-w-[8rem] w-[4rem] sm:w-[13rem] justify-between sm:h-[22rem] rounded-md flex flex-col items-start  ">
       <img
         src={props.img}
         alt="product "
@@ -67,14 +67,14 @@ function ProductCard(props) {
       <div>
         <p className=" font-medium mt-2">{props.name}</p>
       </div>
-      <div className="flex items-center gap-10 w-full">
+      <div className="flex items-center justify-around w-full">
         <p className="font-bold">₹{props.price}</p>
         <div className="flex items-center">
           <p>Size:</p>
           <select
             onChange={handleSize}
             value={selectedSize}
-            className="outline-none"
+            className="outline-none bg-white"
           >
             <option defaultValue>-</option>
             <option value={6}>6</option>

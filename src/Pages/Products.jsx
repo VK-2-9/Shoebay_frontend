@@ -13,11 +13,9 @@ function Products() {
   
   const filterOn = () => {
     setMobileFilter(true);
-    console.log(mobileFilter,"filter on")
   }
   const filterOff = () => {
     setMobileFilter(false);
-    console.log(mobileFilter,"filter off")
   }
 
   return (
@@ -34,7 +32,7 @@ function Products() {
         <button className="bg-gradient-to-r from-yellow-600 to-yellow-300 my-2 mx-7 sm:hidden w-[30%] py-1 rounded-md relative" 
         onClick={filterOn}>Filter</button>
       </div>
-      <div style={{opacity:mobileFilter?"1":"0"}} className="absolute h-full w-full bg-white top-14 p-5 left-0 z-10 sm:hidden transition-all duration-700 ease-in-out">
+      <div  className={`absolute h-full w-full bg-white top-14 p-5 left-0 z-10 sm:hidden transition-all duration-700 ease-in-out ${mobileFilter?`opacity-100 `:`opacity-0 -translate-x-1/2 pointer-events-none`}`} >
       <BrandFilter />
         <CollectionFilter />
         <PriceFilter />
