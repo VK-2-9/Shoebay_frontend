@@ -11,11 +11,12 @@ function ProductCard(props) {
   const navigate = useNavigate();
   const {uId,setUId}=useContext(DataContext)
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUId(user.uid)
+  useEffect( () => {
+     auth.onAuthStateChanged((user) => {
+      
       if (user) { 
         setLogged(true);
+        setUId(user.uid)
       }
     });
   }, []);

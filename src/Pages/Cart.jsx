@@ -20,10 +20,12 @@ function Cart() {
                .catch((err) => console.log("API fetching failed for cart", err));
              axios.get("https://shoebay-backend.onrender.com/api/logindetails").then((data)=>setUserArr(data.data)).catch((err)=>console.log(err))  
     auth.onAuthStateChanged((user) => {
-      setUId(user.uid)
-      if (!user) {
+     
+      if (user){
+        setUId(user.uid)
+      } else{
         navigate("/login");
-        
+        console.log("User not logged in, redirecting to login page");
       }
     });
  
