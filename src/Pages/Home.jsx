@@ -11,10 +11,10 @@ import { useContext } from "react";
 import { DataContext } from "../Components/DataContext";
 
 function Home() {
-  const { productsData} = useContext(DataContext);
+  const { productsData,uId} = useContext(DataContext);
 
   const imgArr = [puma, adidas, newbalance, nike, reebok, skechers, wildcraft];
-
+   
   return (
     <div>
       <Cover />

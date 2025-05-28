@@ -9,9 +9,11 @@ function ProductCard(props) {
   const [buttonDisplay, setButtonDisplay] = useState(true);
   const [logged, setLogged] = useState(false);
   const navigate = useNavigate();
+  const {uId,setUId}=useContext(DataContext)
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
+      setUId(user.uid)
       if (user) { 
         setLogged(true);
       }
@@ -22,7 +24,7 @@ function ProductCard(props) {
     setSelectedSize(e.target.value);
   };
 
-  const addToCart = async (name, size) => {
+  const addToCart = async (name, size,uId) => {
     // checking duplicate cart
 
     if (!selectedSize) {
@@ -31,16 +33,18 @@ function ProductCard(props) {
       alert("login First");
     } else {
       setButtonDisplay(false);
+      console.log(uId)
       await axios
-        .post("https://shoebay-backend.onrender.com/api/cartproducts", {
+        .post("http://localhost:5000/api/cartproducts", {
           name: props.name,
           img: props.img,
           size: selectedSize,
           price: props.price,
           id: props.id, // normal ID..............................................................
           qty: "1",
+          uId:uId
         })
-        .then((data) => console.log(data.data, "fail"))
+        .then((data) => console.log(data.data))
         .catch((err) => {
           console.log(err.response.data);
           alert("Product already added to the cart");
@@ -84,11 +88,12 @@ function ProductCard(props) {
 
       {buttonDisplay ? (
         <button
-          onClick={() => addToCart(props.name, selectedSize)}
+          onClick={() => addToCart(props.name, selectedSize,uId)}
           className="bg-white  w-[100%] py-1 border-2 border-black rounded-md hover:bg-black hover:text-white transition duration-300"
         >
-          Add to Cart
-        </button>
+          Add to Cart 
+        </button> 
+        
       ) : (
         <button
           onClick={() => goToCart()}

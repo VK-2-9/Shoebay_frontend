@@ -11,6 +11,7 @@ function DataContextProvider(data) {
       .then((data) => {
         setAllProducts(data.data);
         setProductsData(data.data)
+        
       }).catch((err) =>{
         console.log("allproduct db err")
         setAllProducts([
@@ -37,6 +38,8 @@ function DataContextProvider(data) {
 
   const[uName,setUName]=useState("")
   const[email,setEmail]=useState("")
+  const[uId,setUId]=useState("")
+  const[userArr,setUserArr]=useState([])
 
   return (
     <DataContext.Provider
@@ -50,7 +53,7 @@ function DataContextProvider(data) {
         setFilterInput,
         qty,
         setQty,
-        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail
+        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail,uId,setUId,userArr,setUserArr
       }}
     >
       {data.children}

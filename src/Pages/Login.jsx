@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../Components/DataContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../config/firebase";
+import axios from "axios";
 
 function Login() {
-  const {  email, setEmail } = useContext(DataContext);
+  const {  email, setEmail,setUId,uId,setUserArr } = useContext(DataContext);
   const [pass, setPass] = useState("");
   const [credentialerr, setCredentialErr] = useState(false);
   const navigate=useNavigate()
@@ -18,16 +19,20 @@ function Login() {
         })
     },[navigate])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth,email,pass).then((data)=>{
+    try{
+       const response= await signInWithEmailAndPassword(auth,email,pass)
+
+       await axios.get("http://localhost:5000/api/logindetails").then((data)=>setUserArr(data.data)).catch(err=>console.log(err))
         setCredentialErr(false)
-        console.log(data)
         navigate("/")
-    }).catch((err)=>{
+    }catch(err){
         setCredentialErr(true)
         console.log(err)
-    })
+    }
+   
+   
 
 };
 

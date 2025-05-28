@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../Components/DataContext";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../config/firebase";
+import axios from "axios";
 
 function SignUp() {
-  const { uname, setUName, email, setEmail } = useContext(DataContext);
+  const { uName, setUName, email, setEmail,setUId,uId } = useContext(DataContext);
   const [pass, setPass] = useState("");
   const [rePass, setRePass] = useState("");
   const [passerr, setPassErr] = useState(false);
@@ -20,21 +21,25 @@ function SignUp() {
         })
     },[navigate])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-        pass!== rePass?
-            setPassErr(true)
-        :
-        setPassErr(false)
-        createUserWithEmailAndPassword(auth,email,pass).then((data)=>{
-            console.log(data)
-            navigate("/login")
-        }).catch((err)=>{
-            console.log("err")
+       if(pass!== rePass){
+           setPassErr(true)
+       } else{
+          setPassErr(false)
+          try{
+             const response= await createUserWithEmailAndPassword(auth,email,pass)
+
+             await axios.post("http://localhost:5000/api/logindetails/signup",{email:response.user.email,uId:response.user.uid,name:uName}).then((data)=>console.log(data)).catch((err)=>console.log(err))
+
+             navigate("/login")
+            console.log(uId)
+          }catch(err){
+               console.log("err")
             alert("Account already exists")
             navigate("/login")
-        })
-        
+          }
+       }    
   };
 
   return (
@@ -47,8 +52,10 @@ function SignUp() {
             type="text"
             placeholder="Username"
             className="w-[100%]  rounded-md px-2 py-1 bg-[#cecfd0] placeholder:text-black "
-            value={uname}
-            onChange={(e)=>setUName(e.target.value)}
+            value={uName}
+            onChange={(e)=>{
+              setPassErr(false)
+              setUName(e.target.value)}}
           ></input>
         </div>
 
@@ -69,7 +76,9 @@ function SignUp() {
             placeholder="Password"
             className="w-[100%]  rounded-md px-2 py-1  bg-[#cecfd0] placeholder:text-black"
             value={pass}
-            onChange={(e)=>setPass(e.target.value)}
+            onChange={(e)=>{
+              setPassErr(false)
+              setPass(e.target.value)}}
           ></input>
         </div>
         <div>
@@ -79,7 +88,9 @@ function SignUp() {
             placeholder="Re-enter password"
             className="w-[100%]   rounded-md px-2 py-1  bg-[#cecfd0] placeholder:text-black"
             value={rePass}
-            onChange={(e)=>setRePass(e.target.value)}
+            onChange={(e)=>{
+              setPassErr(false)
+              setRePass(e.target.value)}}
           ></input>
           <p style={{display:passerr?"block":"none"}} className="text-sm text-red-700">Paswords do not match</p>
         </div>
