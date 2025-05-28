@@ -1,5 +1,5 @@
 import ProductCard from "../Components/ProductCard";
-import {  useContext } from "react";
+import {  useContext, useState } from "react";
 
 import { DataContext } from "../Components/DataContext";
 import BrandFilter from "../Components/BrandFilter.jsx";
@@ -9,17 +9,38 @@ import PriceFilter from "../Components/PriceFilter.jsx";
 
 function Products() {
   const { allProducts} = useContext(DataContext);
+  const[mobileFilter, setMobileFilter] = useState(false);
+  
+  const filterOn = () => {
+    setMobileFilter(true);
+    console.log(mobileFilter,"filter on")
+  }
+  const filterOff = () => {
+    setMobileFilter(false);
+    console.log(mobileFilter,"filter off")
+  }
 
   return (
-    <div className="flex justify-between " >
+    <div className="flex flex-col sm:flex-row justify-between " >
       {/* left section............................................................................................... */}
-      <div className="m-2 mt-1 py-10 px-5 bg-white hidden sm:flex flex-col justify-start gap-7 items-start w-[14rem] h-[100%]">
+      <div className="m-2 mt-1 py-10 px-5 bg-white hidden sm:flex sm:flex-col justify-start gap-7 items-start w-[14rem] h-[100%]">
         <BrandFilter />
         <CollectionFilter />
         <PriceFilter />
         <ColorFilter />
       </div>
-
+    {/* mobile filter..................................................................................... */}
+      <div>
+        <button className="bg-gradient-to-r from-yellow-600 to-yellow-300 my-2 mx-7 sm:hidden w-[30%] py-1 rounded-md relative" 
+        onClick={filterOn}>Filter</button>
+      </div>
+      <div style={{opacity:mobileFilter?"1":"0"}} className="absolute h-full w-full bg-white top-14 p-5 left-0 z-10 sm:hidden transition-all duration-700 ease-in-out">
+      <BrandFilter />
+        <CollectionFilter />
+        <PriceFilter />
+        <ColorFilter />
+        <button className="bg-gradient-to-r from-yellow-600 to-yellow-300 my-2 w-[30%] py-1 rounded-md relative" onClick={filterOff}>Apply</button>
+      </div>
       {/* Right section............................................................................................... */}
 
       <div className="m-2 mt-1 py-10 px-[1rem] sm:px-14 bg-white w-[100%] flex flex-wrap sm:gap-7  ">
