@@ -35,7 +35,7 @@ function ProductCard(props) {
       setButtonDisplay(false);
       console.log(uId)
       await axios
-        .post("http://localhost:5000/api/cartproducts", {
+        .post("https://shoebay-backend.onrender.com/api/cartproducts", {
           name: props.name,
           img: props.img,
           size: selectedSize,

@@ -30,7 +30,7 @@ function SignUp() {
           try{
              const response= await createUserWithEmailAndPassword(auth,email,pass)
 
-             await axios.post("http://localhost:5000/api/logindetails/signup",{email:response.user.email,uId:response.user.uid,name:uName}).then((data)=>console.log(data)).catch((err)=>console.log(err))
+             await axios.post("https://shoebay-backend.onrender.com/api/logindetails/signup",{email:response.user.email,uId:response.user.uid,name:uName}).then((data)=>console.log(data)).catch((err)=>console.log(err))
 
              navigate("/login")
             console.log(uId)

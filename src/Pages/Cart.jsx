@@ -18,7 +18,7 @@ function Cart() {
                .get("https://shoebay-backend.onrender.com/api/cartproducts")
                .then((data) => setCartProducts(data.data))
                .catch((err) => console.log("API fetching failed for cart", err));
-             axios.get("http://localhost:5000/api/logindetails").then((data)=>setUserArr(data.data)).catch((err)=>console.log(err))  
+             axios.get("https://shoebay-backend.onrender.com/api/logindetails").then((data)=>setUserArr(data.data)).catch((err)=>console.log(err))  
     auth.onAuthStateChanged((user) => {
       setUId(user.uid)
       if (!user) {

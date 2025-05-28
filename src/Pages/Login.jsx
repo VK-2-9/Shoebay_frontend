@@ -24,7 +24,7 @@ function Login() {
     try{
        const response= await signInWithEmailAndPassword(auth,email,pass)
 
-       await axios.get("http://localhost:5000/api/logindetails").then((data)=>setUserArr(data.data)).catch(err=>console.log(err))
+       await axios.get("https://shoebay-backend.onrender.com/api/logindetails").then((data)=>setUserArr(data.data)).catch(err=>console.log(err))
         setCredentialErr(false)
         navigate("/")
     }catch(err){
