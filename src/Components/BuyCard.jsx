@@ -20,7 +20,7 @@ function BuyCard(props){
             const finalPrice=props.totalPrice+deliveryCharge;
 
         const placeOrder=async()=>{
-               await axios.post("http://localhost:5000/api/orderproducts",{
+               await axios.post("https://shoebay-backend.onrender.com/api/orderproducts",{
                     uId:uId,
                     price:finalPrice,
                     name:orderName,
@@ -29,9 +29,14 @@ function BuyCard(props){
                     mobileNumber:orderMobileNumber
                 }
                     
-                ).then((data)=>console.log(data.data)).catch((err)=>console.log(err))
+                ).then((data)=>{
+                    console.log(data.data)
+                    navigate("/orders")
+                }).catch((err)=>{
+                    console.log(err)
+            alert("Unable to place order, please try later")})
 
-                navigate("/orders")
+                
         }
 
     return(
