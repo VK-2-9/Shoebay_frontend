@@ -1,16 +1,18 @@
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
 
 
 function AddressCard(){
 
+        const{orderName,setOrderName,orderAddress,setOrderAddress,mobileNumber,setMobileNUmber}=useContext(DataContext)
+
     return(
-        <div className="bg-[#F1F3F6] sm:mx-2 p-2 rounded-md">
-            <p className="py-2">Enter your address here:</p>
-            <input type="text" placeholder="Name" className=" outline-none rounded-md p-1 w-full sm:my-3"/>
-            <input type="text" placeholder="Address" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>
-            <input type="text" placeholder="City" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>
-            <input type="text" placeholder="State" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>
-            <input type="text" placeholder="Pincode" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>
-            <input type="text" placeholder="Phone Number" className=" outline-none rounded-md p-1 w-full sm:mb-3"/>
+        <div className="bg-[#F1F3F6] sm:mx-2 p-2 rounded-md max-h-[16rem]">
+            <p className="py-2">Kindly fill the below details</p>
+            <input type="text" placeholder="Name" value={orderName} onChange={(e)=>setOrderName(e.target.value)} className=" outline-none rounded-md p-1 w-full my-3"/>
+            <textarea placeholder="Address" className="outline-none rounded-md p-1 w-full my-1 h-[5rem]" value={orderAddress} onChange={(e)=>setOrderAddress(e.target.value)}></textarea>
+            
+            <input type="number" placeholder="Phone Number" className=" outline-none rounded-md p-1 w-full mb-2" value={mobileNumber} onChange={(e)=>setMobileNUmber(e.target.value)}/>
 
             </div>
     )

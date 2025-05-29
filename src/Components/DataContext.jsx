@@ -41,6 +41,11 @@ function DataContextProvider(data) {
   const[uId,setUId]=useState("")
   const[userArr,setUserArr]=useState([])
 
+   ///addresss card details
+     const[orderName,setOrderName]=useState("")
+     const[orderAddress,setOrderAddress]=useState("")
+     const[mobileNumber,setMobileNUmber]=useState()
+
   return (
     <DataContext.Provider
       value={{
@@ -53,7 +58,7 @@ function DataContextProvider(data) {
         setFilterInput,
         qty,
         setQty,
-        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail,uId,setUId,userArr,setUserArr
+        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail,uId,setUId,userArr,setUserArr,orderName,setOrderName,orderAddress,setOrderAddress,mobileNumber,setMobileNUmber
       }}
     >
       {data.children}
