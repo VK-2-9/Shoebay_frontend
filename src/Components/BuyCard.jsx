@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function BuyCard(props){
     const [deliveryCharge,setDeliveryCharge]=useState()
+    const[orderConfirmed,setOrderConfirmed]=useState(false)
     const{setUId,uId,orderName,orderAddress,orderMobileNumber}=useContext(DataContext)
     const navigate=useNavigate()
         useEffect(()=>{
@@ -20,27 +21,35 @@ function BuyCard(props){
             const finalPrice=props.totalPrice+deliveryCharge;
 
         const placeOrder=async()=>{
-               await axios.post("https://shoebay-backend.onrender.com/api/orderproducts",{
-                    uId:uId,
-                    price:finalPrice,
-                    name:orderName,
-                    products:props.userCart,
-                    address:orderAddress,
-                    mobileNumber:orderMobileNumber
-                }
+            setOrderConfirmed(true)
+            // if(!orderName || !orderAddress || !orderMobileNumber){
+            //     alert("Please fill all the details to place order")
+            // }else{
+                
+            //     await axios.post("https://shoebay-backend.onrender.com/api/orderproducts",{
+            //         uId:uId,
+            //         price:finalPrice,
+            //         name:orderName,
+            //         products:props.userCart,
+            //         address:orderAddress,
+            //         mobileNumber:orderMobileNumber
+            //     }
                     
-                ).then((data)=>{
-                    console.log(data.data)
-                    navigate("/orders")
-                }).catch((err)=>{
-                    console.log(err)
-            alert("Unable to place order, please try later")})
+            //     ).then((data)=>{
+            //         console.log(data.data)
+                    
+
+            //     }).catch((err)=>{
+            //         console.log(err)
+            // alert("Unable to place order, please try later")})
+            // }
+               
 
                 
         }
 
     return(
-        <div className="bg-[#F1F3F6]  p-2 rounded-md max-h-[16rem]">
+        <div className="bg-[#F1F3F6]  p-2 rounded-md max-h-[16rem] shadow-md ">
             <p>Total price:</p>
             <table>
                 <tbody>
@@ -61,6 +70,10 @@ function BuyCard(props){
                 </tbody>
             </table>
             <button className="  px-2 py-1 border-2 border-black rounded-md flex items-center gap-1 hover:bg-black hover:text-white transition duration-300" onClick={placeOrder}>Place order</button>
+
+            <button className={`bg-green-600 px-3 py-3 rounded-md text-white shadow-lg w-fit cursor-none fixed top-16 left-[50%] transform -translate-x-1/2 z-[25]  ${orderConfirmed ? "popup " : "hidden"}`}>
+                Your order has been placed
+            </button>
 
         </div>
     )

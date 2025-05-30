@@ -29,9 +29,10 @@ function ProductCard(props) {
     // checking duplicate cart
 
     if (!selectedSize) {
-      alert("Select a size");
+      alert("Select your size");
     } else if (!logged) {
-      alert("login First");
+      alert("Kindly login to add products to the cart");
+      navigate("/login");
     } else {
       setButtonDisplay(false);
       console.log(uId)
@@ -61,7 +62,7 @@ function ProductCard(props) {
       <img
         src={props.img}
         alt="product "
-        className=" cursor-pointer border rounded-xl "
+        className="shadow-md  cursor-pointer border rounded-xl "
       ></img>
 
       <div>

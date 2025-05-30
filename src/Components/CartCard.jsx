@@ -63,7 +63,7 @@ function CartCard(props) {
   }
 
   return (
-    <div className="p-2 flex items-center gap-5 bg-[#F1F3F6] rounded-md mb-2 ">
+    <div className="p-2 flex items-center gap-5 bg-[#F1F3F6] min-h-[16rem] rounded-md mb-2 shadow-md ">
       <div className="w-[200px]  md:w-[15rem  ]">
         <img className=" rounded-md w-[12rem]" src={props.img} alt="image err"></img>
       </div>

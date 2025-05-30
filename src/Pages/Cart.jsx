@@ -12,6 +12,7 @@ function Cart() {
   const { cartProducts, setCartProducts, setUserArr, setUId, uId } =
     useContext(DataContext);
   const navigate = useNavigate();
+  const [userCart, setUsercart] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,48 +26,56 @@ function Cart() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setUId(user.uid);
+        setUsercart(
+          cartProducts.filter((item) => {
+            if (item.uId === uId) {
+              return item;
+            }
+          })
+        );
       } else {
         navigate("/login");
         console.log("User not logged in, redirecting to login page");
       }
     });
-
-   
-  }, [navigate]);
-
-   
-     const userCart =cartProducts.filter((item) => {
-      if (item.uId === uId) {
-        return item;
-      }
-    })
-   
+  }, [navigate, uId]);
 
   let totalPrice = 0;
   userCart.map((item) => {
-    totalPrice = totalPrice + Number(item.price.replace(/,/g, ""));
+    totalPrice = totalPrice + Number(item.price.replace(/,/g, "")) * item.qty;
     return totalPrice;
   });
 
   return (
-    <div className=" bg-white sm:p-5 sm:grid sm:grid-cols-[2fr_2fr_1fr]  flex flex-col gap-4 ">
-      <div>
-        {userCart.map((item) => (
-          <CartCard
-            key={item._id}
-            id={item._id}
-            name={item.name}
-            img={item.img}
-            price={item.price}
-            size={item.size}
-            qty={item.qty}
-            uId={uId}
-          />
-        ))}
-      </div>
+    <div>
+      {userCart.length === 0 ? (
+        <div className="p-5 m-5 bg-white rounded-md shadow-lg text-center">
+          <p>
+            Your cart is empty. Please add some products to your cart to proceed
+            with the purchase.
+          </p>
+        </div>
+      ) : (
+        <div className=" bg-white sm:p-5 sm:grid sm:grid-cols-[2fr_2fr_1fr]  flex flex-col gap-4 ">
+          <div>
+            {userCart.map((item) => (
+              <CartCard
+                key={item._id}
+                id={item._id}
+                name={item.name}
+                img={item.img}
+                price={item.price}
+                size={item.size}
+                qty={item.qty}
+                uId={uId}
+              />
+            ))}
+          </div>
 
-      <AddressCard />
-      <BuyCard userCart={userCart} totalPrice={totalPrice} />
+          <AddressCard />
+          <BuyCard userCart={userCart} totalPrice={totalPrice} />
+        </div>
+      )}
     </div>
   );
 }

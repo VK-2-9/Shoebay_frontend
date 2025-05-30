@@ -32,7 +32,7 @@ function Products() {
         <button className="bg-gradient-to-r from-yellow-600 to-yellow-300 my-2 mx-7 sm:hidden w-[30%] py-1 rounded-md relative" 
         onClick={filterOn}>Filter</button>
       </div>
-      <div  className={`absolute h-full w-full bg-white top-14 p-5 left-0 z-10 sm:hidden transition-all duration-700 ease-in-out ${mobileFilter?`opacity-100 `:`opacity-0 -translate-x-1/2 pointer-events-none`}`} >
+      <div  className={`absolute min-h-screen w-full bg-white top-14 p-5 left-0 z-10 sm:hidden transition-all duration-700 ease-in-out ${mobileFilter?`opacity-100 `:`opacity-0 -translate-x-1/2 pointer-events-none`}`} >
       <BrandFilter />
         <CollectionFilter />
         <PriceFilter />
