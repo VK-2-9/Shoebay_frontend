@@ -95,11 +95,11 @@ function Navbar() {
             className={`cursor-pointer text-2xl relative  `}
             onClick={openVerticalNav}
           ></FontAwesomeIcon>
-          <div className={`absolute bg-white flex flex-col top-0 left-48 w-[300rem] h-[100vh]  pl-2 pt-3 transition-all ease-in-out duration-1000  ${navDisplay? "opacity-100" : "opacity-0 pointer-events-none transform translate-x-1/2"}`}>
+          <div className={`fixed bg-white flex flex-col top-0 right-0 w-[50vw]  h-[100vh]  pl-2 pt-3 transition-all ease-in-out duration-1000  ${navDisplay? "opacity-100 " : "opacity-0  pointer-events-none transform translate-x-full "}`}>
             <div>
               <FontAwesomeIcon
                 icon={faX}
-                className="text-2xl"
+                className="text-2xl" 
                 onClick={openVerticalNav}
               />
             </div>

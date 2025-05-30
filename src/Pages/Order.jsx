@@ -1,38 +1,58 @@
-import { useEffect,useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../config/firebase";
 import axios from "axios";
+import { DataContext } from "../Components/DataContext";
+import OrderProducts from "../Components/OrderProducts";
 
 function Order() {
   const navigate = useNavigate();
-  const [orderArr,setOrderArr] = useState([]);
+  const [orderArr, setOrderArr] = useState([]);
+  const{setUId,uId}=useContext(DataContext)
+  
 
   useEffect(() => {
-    console.log("useEffect called");
     auth.onAuthStateChanged((user) => {
       if (!user) {
         navigate("/login");
-      }
-    });
-
-    axios.get("https://shoebay-backend.onrender.com/api/orderproducts")
+      }else{
+        setUId(user.uid)
+         axios
+      .get("https://shoebay-backend.onrender.com/api/orderproducts")
       .then((data) => {
-        console.log(data.data);
-        setOrderArr(data.data);
-        if (data.data.length === 0) {
-          alert("No orders found")        }
-
+        
+       const foundUser=(data.data).filter((item)=>item.uId===user.uid)
+        setOrderArr(foundUser)
+        console.log(orderArr)
+        if (foundUser.length === 0) {
+          alert("No orders found");
+        }
       })
       .catch((error) => {
         console.error("Error fetching orders:", error);
       });
-  }, [navigate]);
+      }
+    });
+
+   
+  }, [navigate])
 
   return (
-    <div className="p-5 m-5 bg-white">
-      <h1>Order</h1>
-      <p>Here you can view your past orders.</p>
-      <div></div>
+    
+    <div className="m-2 ">
+      <div className="bg-white p-2">
+          
+      <p className="text-xl font-bold">Here you can view your past orders.</p>
+      </div>
+    
+      <div >
+        {
+         orderArr.length===0?<p>No orders found</p>:
+          orderArr.map((item)=>{
+             return <OrderProducts name={item.name} address={item.address} price={item.price} products={item.products} key={item._id}/>
+          })
+        }
+      </div>
     </div>
   );
 }
