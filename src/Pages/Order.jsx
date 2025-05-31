@@ -24,9 +24,6 @@ function Order() {
        const foundUser=(data.data).filter((item)=>item.uId===user.uid)
         setOrderArr(foundUser)
         console.log(orderArr)
-        if (foundUser.length === 0) {
-          alert("No orders found");
-        }
       })
       .catch((error) => {
         console.error("Error fetching orders:", error);

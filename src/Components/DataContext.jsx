@@ -44,7 +44,7 @@ function DataContextProvider(data) {
    ///addresss card details
      const[orderName,setOrderName]=useState("")
      const[orderAddress,setOrderAddress]=useState("")
-     const[mobileNumber,setMobileNUmber]=useState()
+     const[orderMobileNumber,setMobileNumber]=useState("")
 
   return (
     <DataContext.Provider
@@ -58,7 +58,7 @@ function DataContextProvider(data) {
         setFilterInput,
         qty,
         setQty,
-        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail,uId,setUId,userArr,setUserArr,orderName,setOrderName,orderAddress,setOrderAddress,mobileNumber,setMobileNUmber
+        cartProducts,setCartProducts,orderOroducts,setOrderProducts,uName,setUName,email,setEmail,uId,setUId,userArr,setUserArr,orderName,setOrderName,orderAddress,setOrderAddress,orderMobileNumber,setMobileNumber
       }}
     >
       {data.children}

@@ -9,36 +9,41 @@ import { useNavigate } from "react-router-dom";
 import auth from "../config/firebase";
 
 function Cart() {
-  const { cartProducts, setCartProducts, setUserArr, setUId, uId } =
+  const { cartProducts, setCartProducts, setUId, uId } =
     useContext(DataContext);
   const navigate = useNavigate();
   const [userCart, setUsercart] = useState([]);
 
-  useEffect(() => {
-    axios
+
+  useEffect(()=>{
+        axios
       .get("https://shoebay-backend.onrender.com/api/cartproducts")
       .then((data) => setCartProducts(data.data))
       .catch((err) => console.log("API fetching failed for cart", err));
-    axios
-      .get("https://shoebay-backend.onrender.com/api/logindetails")
-      .then((data) => setUserArr(data.data))
-      .catch((err) => console.log(err));
-    auth.onAuthStateChanged((user) => {
+
+  },[setCartProducts])
+
+
+  useEffect(()=>{
+        auth.onAuthStateChanged((user) => {
       if (user) {
-        setUId(user.uid);
-        setUsercart(
-          cartProducts.filter((item) => {
-            if (item.uId === uId) {
-              return item;
-            }
-          })
-        );
-      } else {
-        navigate("/login");
+        setUId(user.uid);}
+        else{
+            navigate("/login");
         console.log("User not logged in, redirecting to login page");
-      }
-    });
-  }, [navigate, uId]);
+        }
+  })},[navigate,setUId])
+
+  useEffect(() => {
+   
+          const filtered = cartProducts.filter((item) => {
+          if (item.uId === uId) {
+            return item;
+          }
+        });
+        setUsercart(filtered);
+      
+  }, [cartProducts]);
 
   let totalPrice = 0;
   userCart.map((item) => {

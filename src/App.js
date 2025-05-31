@@ -11,6 +11,7 @@ import DataContextProvider from "./Components/DataContext";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Profile from "./Pages/Profile";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
+            <Route path="/forgotpassword" element={<ForgotPassword/>}></Route>
             <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/" element={<Home />}></Route>
             <Route path="/products" element={<Products/>}></Route>

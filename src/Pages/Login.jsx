@@ -6,40 +6,39 @@ import auth from "../config/firebase";
 import axios from "axios";
 
 function Login() {
-  const {  email, setEmail,setUId,uId,setUserArr } = useContext(DataContext);
+  const { email, setEmail, setUId, uId, setUserArr } = useContext(DataContext);
   const [pass, setPass] = useState("");
   const [credentialerr, setCredentialErr] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        auth.onAuthStateChanged((user)=>{
-            if(user){
-                navigate("/")
-            }
-        })
-    },[navigate])
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigate("/");
+      }
+    });
+  }, [navigate]);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-       const response= await signInWithEmailAndPassword(auth,email,pass)
+    try {
+       await signInWithEmailAndPassword(auth, email, pass);
 
-       await axios.get("https://shoebay-backend.onrender.com/api/logindetails").then((data)=>setUserArr(data.data)).catch(err=>console.log(err))
-        setCredentialErr(false)
-        navigate("/")
-    }catch(err){
-        setCredentialErr(true)
-        console.log(err)
+      await axios
+        .get("https://shoebay-backend.onrender.com/api/logindetails")
+        .then((data) => setUserArr(data.data))
+        .catch((err) => console.log(err));
+      setCredentialErr(false);
+      navigate("/");
+    } catch (err) {
+      setCredentialErr(true);
+      console.log(err);
     }
-   
-   
-
-};
+  };
 
   return (
     <div className="my-20 bg-white w-[75%] md:w-[50%] ml-[50%] transform -translate-x-1/2 rounded-md">
-      <form className="flex flex-col gap-5 p-5"
-      onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-5 p-5" onSubmit={handleSubmit}>
         <h2 className="font-bold text-2xl">Login</h2>
         <div>
           <input
@@ -47,7 +46,8 @@ function Login() {
             placeholder="Email"
             className="w-[100%] rounded-md px-2 py-1  bg-[#cecfd0] placeholder:text-black "
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {setEmail(e.target.value)
+               setCredentialErr(false)}}
           ></input>
         </div>
         <div>
@@ -56,13 +56,15 @@ function Login() {
             placeholder="Password"
             className="w-[100%] rounded-md px-2 py-1  bg-[#cecfd0] placeholder:text-black"
             value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            onChange={(e) =>{ setPass(e.target.value)
+              setCredentialErr(false)
+            }}
           ></input>
           <p
             style={{ display: credentialerr ? "block" : "none" }}
             className="text-sm text-red-700"
           >
-           Incorrect username or password
+            Incorrect username or password
           </p>
         </div>
 
@@ -74,11 +76,20 @@ function Login() {
             Login
           </button>
         </div>
-        <div>
-          New user?{" "}
-          <Link className="text-blue-700" to={"/signup"}>
-            SignUp
-          </Link>
+
+        <div className="flex justify-between px-2">
+          <div>
+            New user?{" "}
+            <Link className="text-blue-700" to={"/signup"}>
+              SignUp
+            </Link>
+          </div>
+
+          <div>
+            <Link className="text-blue-700" to={"/forgotpassword"}>
+              Forgot password?
+            </Link>
+          </div>
         </div>
       </form>
     </div>

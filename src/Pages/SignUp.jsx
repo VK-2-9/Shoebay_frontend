@@ -108,6 +108,8 @@ function SignUp() {
             Login{" "}
           </Link>
         </div>
+
+        
       </form>
     </div>
   );
