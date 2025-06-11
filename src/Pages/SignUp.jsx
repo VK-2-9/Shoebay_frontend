@@ -10,6 +10,7 @@ function SignUp() {
   const [pass, setPass] = useState("");
   const [rePass, setRePass] = useState("");
   const [passerr, setPassErr] = useState(false);
+  const[passLength,setPassLength]=useState(false)
   const navigate=useNavigate() 
   
   
@@ -24,9 +25,11 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault()
        if(pass!== rePass){
+        setPassLength(false)
            setPassErr(true)
        } else{
           setPassErr(false)
+          setPassLength(false)
           try{
              const response= await createUserWithEmailAndPassword(auth,email,pass)
 
@@ -35,9 +38,14 @@ function SignUp() {
              navigate("/login")
             console.log(uId)
           }catch(err){
-               console.log("err")
-            alert("Account already exists")
-            navigate("/login")
+               console.log(err)
+               if(pass.length<6){
+                  setPassLength(true)
+               }else{
+                  alert("Account already exists")
+                   navigate("/login")
+               }
+            
           }
        }    
   };
@@ -93,6 +101,7 @@ function SignUp() {
               setRePass(e.target.value)}}
           ></input>
           <p style={{display:passerr?"block":"none"}} className="text-sm text-red-700">Paswords do not match</p>
+           <p style={{display:passLength?"block":"none"}} className="text-sm text-red-700">Password should be at least 6 characters</p>
         </div>
 
         <div>

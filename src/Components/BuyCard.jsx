@@ -28,6 +28,8 @@ function BuyCard(props) {
     if (!orderName || !orderAddress || !orderMobileNumber) {
       console.log(orderAddress,orderMobileNumber,orderName)
       alert("Please fill all the details to place order");
+    }else if(orderMobileNumber.length!==10){
+        alert("Invalid mobile number")
     } else {
       await axios
         .post("https://shoebay-backend.onrender.com/api/orderproducts", {
